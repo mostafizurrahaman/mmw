@@ -93,20 +93,19 @@ const Hero = () => {
 
   // Framer Motion Variants
   const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { staggerChildren: 0.2, duration: 0.8 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 100 },
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
@@ -216,11 +215,11 @@ const Hero = () => {
       <motion.div
         className="mx-auto"
         variants={itemVariants}
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, y: 60 }}
         animate={{
           opacity: 1,
-          x: 0,
-          transition: { type: "spring", stiffness: 80, delay: 0.5 },
+          y: 0,
+          transition: { duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 },
         }}
       >
         <img src={img} alt="hero_img" className="w-full max-w-md" />

@@ -9,22 +9,21 @@ import { motion } from "framer-motion";
 
 const container = {
   hidden: { opacity: 0 },
-  show: {
+  visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.25,
+      staggerChildren: 0.15,
     },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 60 },
-  show: {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: "easeOut",
+      duration: 0.8, ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -33,33 +32,30 @@ const WhyChooseUs = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="text-white mt-10 px-2 md:px-0">
+    <motion.div 
+      className="text-white mt-10 px-2 md:px-0"
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       {/* Title Animation */}
       <motion.p
-        initial={{ opacity: 0, y: -40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
+        variants={item}
         className="text-center text-[30px] md:text-[48px] font-bold"
       >
         {t("whyChooseUs")}
       </motion.p>
 
       <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.7 }}
-        viewport={{ once: true }}
+        variants={item}
         className="text-center mt-5"
       >
         {t("unlockOpportunitiesPart1")}
       </motion.p>
 
       <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.7 }}
-        viewport={{ once: true }}
+        variants={item}
         className="text-center"
       >
         {t("unlockOpportunitiesPart2")}
@@ -68,9 +64,6 @@ const WhyChooseUs = () => {
       {/* Cards Animation */}
       <motion.div
         variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
         className="md:flex justify-between items-center py-10 mt-20"
       >
         {/* Card 1 */}
@@ -132,7 +125,7 @@ const WhyChooseUs = () => {
           <p>{t("instantRewardsLine3")}</p>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

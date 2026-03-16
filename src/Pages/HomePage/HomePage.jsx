@@ -6,10 +6,9 @@ import DownloadApp from "../../Components/DownloadApp/DownloadApp";
 
 const HomePage = () => {
  
-
   return (
-    <div className="bg-[#090909]">
-      <div className="container mx-auto">
+    <div className="bg-[#090909] overflow-hidden">
+      <div className="container mx-auto flex flex-col gap-24 md:gap-40 pb-32">
         <Hero />
         <WhyChooseUs />
         <StepEarn />
